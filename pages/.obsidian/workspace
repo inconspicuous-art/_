@@ -1,0 +1,103 @@
+{
+  "main": {
+    "id": "ffe618cedb9214c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "7652fe481ecda8e5",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "todo/inconspicuous.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c66e74b33ec93599",
+    "type": "split",
+    "children": [
+      {
+        "id": "29325f278d266e89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ac1c58587bc0b14",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "7bad6613d59b0dd9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "48d5b0c4f457204e",
+    "type": "split",
+    "children": [
+      {
+        "id": "4eeab5a8f66f4f33",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f1671a680f1f369a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "todo/inconspicuous.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "7652fe481ecda8e5",
+  "lastOpenFiles": [
+    "todo/inconspicuous.md",
+    "about.md",
+    "_swag/clicking the dot.md",
+    "default.md",
+    "index.md",
+    "LICENSE.md",
+    "todo/Implementation.md",
+    "todo/Notes.md",
+    "functionality/With spaces - should work too.md",
+    "functionality/README.md"
+  ]
+}
