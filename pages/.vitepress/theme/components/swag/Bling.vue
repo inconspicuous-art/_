@@ -2,46 +2,63 @@
 .container
   main
     slot
-  Renderer(ref="renderer" alpha="true" resize="true")
+  Renderer(ref="renderer" alpha=true resize="true")
     Camera(:position="{ z: 2 }")
     Scene
       PointLight(:position="{ y: 50, z: 50 }" color="#d8bfd8")
       // Frame of the box
-      Icosahedron(ref="icosahedron" :rotation="icosahedron.rotation")
+      Icosahedron(ref="icosahedron" :rotation="icosahedronRotation")
         PhysicalMaterial(color="#96fbc7")
-      Dodecahedron(ref="dodecahedron" :rotation="dodecahedron.rotation")
+      Dodecahedron(ref="dodecahedron" :rotation="dodecahedronRotation")
         PhysicalMaterial(color="#f7ffae")
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-const renderer = ref(null)
-const icosahedron = ref({
-  rotation: { x: 0, y: 0, z: 0 },
-});
-const dodecahedron = ref({
-  rotation: { x: 0, y: 0, z: 0 },
-});
-import TWEEN from '@tweenjs/tween.js';
+import * as TWEEN from '@tweenjs/tween.js';
+
+const icosahedronRotation = ref({ x: 0, y: 0, z: 0 });
+const dodecahedronRotation = ref({ x: 0, y: 0, z: 0 });
+const icosahedron = ref(null);
+const dodecahedron = ref(null);
+// Rotate the icosahedron and dodecahedron around all three axes. The rotation speed is determined by the value of the rotationSpeed property.
+const getRandomAngle = (pow = 1) =>  {
+  return Math.random() * Math.PI * pow;
+}
+
+// Start animation loop.
+const renderer = ref(null);
 onMounted(() => {
-  // Rotate the icosahedron and dodecahedron around all three axes. The rotation speed is determined by the value of the rotationSpeed property.
-  // Start animation loop.
-  const getRandomAngle = (pow = 1) =>  {
-    return Math.random() * Math.PI * pow;
+  // Setup the animation loop.
+  function animate(time) {
+    TWEEN.update(time)
+    requestAnimationFrame(animate);
+
+    console.log('frame')
   }
-  const animate = () => {
-    new TWEEN.Tween(icosahedron.value.rotation)
-      .to({ x: getRandomAngle( 1/4), y: getRandomAngle(1/4), z: getRandomAngle(1/4) }, 1000)
-      .easing(TWEEN.Easing.Quadratic.InOut)
-      .start();
-    new TWEEN.Tween(dodecahedron.value.rotation)
-      .to({ x: getRandomAngle(), y: getRandomAngle(), z: getRandomAngle() }, 1000)
-      .easing(TWEEN.Easing.Quadratic.InOut)
-      .start();
-    setTimeout(animate, 1000);
+  function morbinTime() {
+    const tween = new TWEEN.Tween(dodecahedronRotation.value)
+        .to({x: getRandomAngle(), y: getRandomAngle(), z: getRandomAngle()}, 1000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        // .onUpdate(() => {
+        //   // dodecahedron.value.rotation.set(dodecahedronRotation.value.x, dodecahedronRotation.value.y, dodecahedronRotation.value.z);
+        // })
+        .start();
+    const tween2 = new TWEEN.Tween(icosahedronRotation.value)
+        .to({x: getRandomAngle(1/4), y: getRandomAngle(1/4), z: getRandomAngle(1/4)}, 1000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        // .onUpdate(() => {
+        //   // icosahedron.value.rotation.set(icosahedronRotation.value.x, icosahedronRotation.value.y, icosahedronRotation.value.z);
+        // })
+        .start();
+    setTimeout(() => {
+      morbinTime()
+    }, 1000);
   }
+  morbinTime()
   animate()
 })
+
 </script>
 
 <style lang="stylus" scoped>

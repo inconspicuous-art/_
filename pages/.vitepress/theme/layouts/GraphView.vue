@@ -3,7 +3,7 @@
   .Content
     Content
   .GraphView
-    GraphCanvas
+    //GraphCanvas
 </template>
 
 <script setup>

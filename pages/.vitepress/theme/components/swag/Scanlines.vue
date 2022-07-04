@@ -3,7 +3,7 @@
   main
     slot
   .clickable(v-if="show")
-    Renderer(ref="renderer" alpha="true" resize="true")
+    Renderer(ref="renderer" alpha=true resize="true")
       Camera(:position="{ z: 2 }")
       Scene
         PointLight(:position="{ y: 50, z: 50 }" color="#d8bfd8")

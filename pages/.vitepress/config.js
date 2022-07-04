@@ -1,7 +1,5 @@
-import './build.js'
-import * as graph from './dist/graph.json'
-
-
+import {generateGraph} from './build.js'
+const graph = generateGraph()
 // Converts [[links]] to <a> tags
 const wikilinks = require('markdown-it-wikilinks')(
     //options
